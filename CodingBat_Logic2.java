@@ -42,4 +42,63 @@ public class CodingBat_Logic2 {
         
       return a+b+c;
     }
+
+    /**
+     * Soal: noTeenSum
+     Given 3 int values, a b c, return their sum. However, if any of the values is a teen -- in the range 13..19 inclusive -- then that value counts as 0, except 15 and 16 do not count as a teens. 
+     Write a separate helper "public int fixTeen(int n) {"that takes in an int value and returns that value fixed for the teen rule. 
+     In this way, you avoid repeating the teen code 3 times (i.e. "decomposition"). Define the helper below and at the same indent level as the main noTeenSum().
+
+     *Logika: Jika salahsatu parameter a, b, dan c bernilai rentang 13 sampa 19, kecuali 15 dan 16, maka kembalikan angka 0
+    */
+     public int noTeenSum(int a, int b, int c) {
+          return fix(a)+fix(b)+fix(c);
+    }
+
+    public int fix(int n){
+          if(n>=13 && n<=19 && n!=15 && n!=16) {return 0;}
+      return n;
+    }
+
+    /**
+     * Soal: roundSum
+     For this problem, we'll round an int value up to the next multiple of 10 if its rightmost digit is 5 or more, so 15 rounds up to 20. 
+     Alternately, round down to the previous multiple of 10 if its rightmost digit is less than 5, so 12 rounds down to 10. 
+     Given 3 ints, a b c, return the sum of their rounded values. 
+     To avoid code repetition, write a separate helper "public int round10(int num) {" and call it 3 times. Write the helper entirely below and at the same indent level as roundSum().
+
+     *Logika: Jika angka belakang Kurang dari 5 maka bulatkan kebawah, tapi jika angak belakangnya lebih atau sama dengan 5 maka bulatkan ke atas
+    */
+    public int roundSum(int a, int b, int c) {
+      return round10(a)+round10(b)+round10(c);
+    }
+
+    public int round10(int n){
+        int rd=n%10; //Variabel untuk mendpatkan angka paling akhir
+        
+      return n%10 < 5 ? n-rd : n+(10-rd);
+    }
+    /**
+     *Soal:closeFar
+     Given three ints, a b c, return true if one of b or c is "close" (differing from a by at most 1), 
+     while the other is "far", differing from both other values by 2 or more. Note: Math.abs(num) computes the absolute value of a number.
+
+     *Logika: Kembalikan true jika b atau c berjarak maksimal 1 dan salahsatu dari b atau c (yang tidak berjarak maksimal 1 dari a),
+              Berjarak 2 dari a dan b atau c yang tidak berjarak 1 dengan a.
+    */
+    public boolean closeFar(int a, int b, int c) {
+      return (Math.abs(a-b) <=1 && Math.abs(c-a)>=2 && Math.abs(c-b) >=2) ||
+             (Math.abs(a-c) <=1 && Math.abs(b-a)>=2 && Math.abs(b-c) >=2);
+    }
+    /**
+     *Soal:blackjack
+     Given 2 int values greater than 0, return whichever value is nearest to 21 without going over. Return 0 if they both go over.
+
+     *Logika: Cari angka yang paling dekat dari 21 tapi tidak boleh lebih dari 21, jika melebihi dari 21 maka dianggap gugur (0)
+    */
+    public int blackjack(int a, int b) {
+      if(a>21) a=0;
+      if(b>21) b=0;
+      return (a>b) ? a:b;
+    }
 }
