@@ -101,4 +101,31 @@ public class CodingBat_Logic2 {
       if(b>21) b=0;
       return (a>b) ? a:b;
     }
+    /**
+     *Soal:evenlySpaced
+    Given three ints, a b c, one of them is small, one is medium and one is large. 
+    Return true if the three values are evenly spaced, so the difference between small and medium is the same as the difference between medium and large.
+
+    *Logika:Urutkan angka a, d, dan c, lalu lakukan perhitungan untuk memastikan a, b, dan c meiliki selisih angka yang sama
+    */
+    public boolean evenlySpaced(int a, int b, int c) {
+      int[] nums={a,b,c};
+      java.util.Arrays.sort(nums);
+  
+      return (nums[1]-nums[0]) == (nums[2]-nums[1]);
+    }
+
+    /**
+     * We want make a package of goal kilos of chocolate. We have small bars (1 kilo each) and big bars (5 kilos each). 
+     Return the number of small bars to use, assuming we always use big bars before small bars. Return -1 if it can't be done.
+
+     *Logika: Mencari ukuran pas untuk memnuhi permintaan goal, dengan cara menggunakan big terlebih dahulu,
+     Lalu temukan sisa kurang dari goal menggunakan small, jika small dapat memenuhi maka kembalikan jumlah angka yang dibtuhkan untuk memnuhi goal, jika tidak kembalikan -1.
+    */
+    public int makeChocolate(int small, int big, int goal) {
+      int yangDipakaiBig = Math.min(big, goal / 5);
+      int sisaKilo = goal - (yangDipakaiBig * 5);
+      return small >= sisaKilo ? sisaKilo : -1;
+       }
+
 }
