@@ -1,4 +1,4 @@
-# Java Logic-2: High-Stakes Algorithm Practice
+# Java Logic
 
 > "I don't just write code; I fight with logic until it's efficient."
 
